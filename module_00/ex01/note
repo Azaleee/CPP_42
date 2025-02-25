@@ -1,5 +1,0 @@
-Main loop waiting for an input (ADD, SEARCH, EXIT)
-Do nothing if entry is not as expected
-
-If ADD :
-    create a Contact object -> Ask the user for his name etc...

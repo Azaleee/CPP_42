@@ -12,7 +12,7 @@ void	Contact::setField(std::string fieldName, std::string &field)
 		if (!field.empty())
 			break ;
 		else
-			std::cout << "Fields cannot be empty !!!!\n";
+			std::cout << "\033[30;41;1mFields cannot be empty !!!!\033[0m" << std::endl;
 	}
 }
 
@@ -23,11 +23,12 @@ void	Contact::setContactInfos()
 	setField("Nickname : ", this->nickName);
 	setField("Phone Number : ", this->phoneNumber);
 	setField("Darkest secret : ", this->darkSecret);
+	std::cout << "\033[30;42mContact added !\033[39;49m" << std::endl;
 }
 
 std::string	Contact::getTruncField(std::string field)
 {
-	if (field.length() >= 9)
+	if (field.length() > 10)
 		return (field.substr(0, 9) + '.');
 	else
 		return (field);

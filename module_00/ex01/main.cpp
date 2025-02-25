@@ -12,7 +12,7 @@ int main(int ac, char **av)
 	{
 		while (true)
 		{
-			std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
+			std::cout << "Enter a command (\033[1mADD\033[0m, \033[1mSEARCH\033[0m, \033[1mEXIT\033[0m): ";
 			std::getline(std::cin, line);
 			if (std::cin.eof())
 			{

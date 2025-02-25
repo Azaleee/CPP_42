@@ -11,15 +11,12 @@ public:
 	PhoneBook();
 	void	addContact();
 	void	searchCommand();
-	void	getIndexContact();
 
 //	GETTER
-	int 	getContactNumber();
-
-//	SETTER
-	void 	setContactNumber(int contactNumber);
+	int		getContactNumber();
 private:
 	void	displayContact(int contact_index);
+	void	getIndexContact();
 
 	Contact	contactList[LIMIT_CONTACT];
 	int 	index;
