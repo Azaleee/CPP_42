@@ -1,0 +1,15 @@
+SRC = *.cpp
+ = file
+CC = c++ -Wall -Wextra -Werror -std=c++98
+
+all: $()
+
+$(): $(SRC)
+	$(CC) $(SRC) -o $()
+
+clean:
+	rm -rf $()
+
+fclean: clean
+
+re: fclean all

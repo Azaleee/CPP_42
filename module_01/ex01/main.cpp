@@ -5,19 +5,15 @@
 #include "Zombie.hpp"
 #include <iostream>
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	(void)av;
-	if (ac == 1)
-	{
-//		Zombie	*herobrine;
-//
-//		std::cout << "\n\n\033[30;46;1m/?\\\033[0m Zombie created by reference for use outside the newZombie function" << std::endl;
-//		herobrine = newZombie("herobrine");
-//		herobrine->announce();
-//		delete herobrine;
-//		std::cout << "\n\033[30;46;1m/?\\\033[0m Zombie temporarily created, announce function is only available in the randomChump function" << std::endl;
-//		randomChump("Temporary");
-	}
+
+	Zombie	*horde;
+
+	std::cout << "\n\n\033[30;46;1m/?\\\033[0m Zombie horde created by reference for use outside the zombieHorde function" << std::endl;
+	horde = zombieHorde(5, "Bizon");
+	for (int i = 0; i < 5; i++)
+		horde[i].announce();
+	delete[] horde;
 	return (0);
 }

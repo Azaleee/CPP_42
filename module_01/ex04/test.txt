@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+
+int	main(int ac, char **av)
+{
+	if (ac == 4)
+	{
+		std::string file_content;
+		std::ifstream file(av[1]);
+		if (file.is_open())
+		{
+			std::cout << "Good file opened" << std::endl;
+			while (getline(file, file_content))
+				std::cout << file_content;
+			file.close();
+			std::cout << "File closed" << std::endl;
+		}
+		else
+		{
+			std::cout << "Error" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Error usage : ./file <file_name> <s1> <s2>" << std::endl;
+	}
+	return (0);
+}
