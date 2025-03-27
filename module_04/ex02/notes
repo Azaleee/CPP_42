@@ -1,0 +1,7 @@
+EX 00 :
+
+Polymorphism : It allows objects of different derived classes to be treated as objects of
+a common base class while maintaining their unique behaviors.
+
+A virtual function allows derived classes to override it while ensuring that the correct
+function is called at runtime, even if accesses via a base class pointer.
