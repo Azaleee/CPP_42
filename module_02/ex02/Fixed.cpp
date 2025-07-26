@@ -33,7 +33,8 @@ Fixed::~Fixed()
 {
 }
 
-//Overload comparison operator
+// Overload comparison operator
+// Compare using rawBits
 
 bool	Fixed::operator>(const Fixed &other) const
 {
@@ -62,7 +63,7 @@ bool	Fixed::operator==(const Fixed &other) const
 
 bool	Fixed::operator>=(const Fixed &other) const
 {
-	return (this->_value == other._value);
+	return (this->_value >= other._value);
 }
 
 //Overload arithmetic operator

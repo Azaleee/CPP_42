@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	ScavTrap	player1("Player1");
+	FragTrap	player1("Player1");
 
 	std::cout << std::endl;
 	std::cout << "Energy point test" << std::endl;
@@ -14,7 +14,7 @@ int main(void)
 	}
 	std::cout << std::endl;
 
-	ScavTrap	player2;
+	FragTrap	player2;
 
 	std::cout << std::endl;
 	std::cout << "Death detection" << std::endl;
@@ -24,7 +24,7 @@ int main(void)
 	}
 	std::cout << std::endl;
 
-	ScavTrap	player3("Player3");
+	FragTrap	player3("Player3");
 
 	std::cout << std::endl;
 	std::cout << "Repair features" << std::endl;

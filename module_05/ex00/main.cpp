@@ -12,8 +12,7 @@ int main(void)
 	}
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
-		std::cerr << "\033[31;1mError with construction : " << e.what() << "\033[0m" \
-		<< std::endl;
+		std::cerr << "\033[31;1mError with construction : " << e.what() << "\033[0m" << std::endl;
 	}
 
 	try
@@ -22,8 +21,7 @@ int main(void)
 	}
 	catch (const Bureaucrat::GradeTooLowException& e)
 	{
-		std::cerr << "\033[31;1mError with construction : " << e.what() << "\033[0m" \
-		<< std::endl;
+		std::cerr << "\033[31;1mError with construction : " << e.what() << "\033[0m" << std::endl;
 	}
 
 	std::cout << std::endl;

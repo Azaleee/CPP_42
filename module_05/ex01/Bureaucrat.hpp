@@ -9,11 +9,16 @@
 #include <iostream>
 #include <exception>
 
+#include "Form.hpp"
+
+class Form;
 class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
+
+		void signForm(Form &form);
 
 		std::string getName(void) const;
 		int 		getGrade(void) const;

@@ -5,7 +5,7 @@
 #include <iostream>
 #include "ReplaceFile.hpp"
 
-int	main(int ac, char **av)
+int	main(int ac, const char **av)
 {
 	if (ac == 4)
 	{

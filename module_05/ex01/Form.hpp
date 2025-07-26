@@ -8,22 +8,27 @@
 #include <string>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class Form
 {
+	private:
+		std::string m_name;
+		bool		m_isSigned;
+		const int 	m_gradeToSign;
+		const int 	m_gradeToExecute;
 	public:
 		Form(void);
-		Form(std::string name, bool isSigned, const int m_gradeToSign, \
-			const int m_gradeToExecute);
+		Form(std::string name, const int m_gradeToSign, const int m_gradeToExecute);
+		~Form(void);
 		Form(const Form &other);
 		Form &operator=(const Form &other);
-		~Form(void);
 
 		void		beSigned(const Bureaucrat &bureaucrat);
 
 		std::string getName(void) const;
 		bool		getIsSigned(void) const;
-		const int 	getGradeToSign(void) const;
-		const int 	getGradeToExecute(void) const;
+		int 		getGradeToSign(void) const;
+		int 		getGradeToExecute(void) const;
 
 		class		GradeTooHighException : public std::exception
 		{
@@ -35,14 +40,8 @@ class Form
 			public:
 				const char* what() const throw() { return ("Grade is to low"); };
 		};
-
-	private:
-		std::string m_name;
-		bool		m_isSigned;
-		const int 	m_gradeToSign;
-		const int 	m_gradeToExecute;
 };
 
-std::ostream &operator << (std::ostream &out, const Form &target);
+std::ostream &operator<<(std::ostream &out, const Form &target);
 
 #endif //CPP_42_FORM_HPP

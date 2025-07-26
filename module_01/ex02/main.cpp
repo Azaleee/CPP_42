@@ -9,6 +9,7 @@ int	main(void)
 	std::string	string = "HI THIS IS BRAIN";
 	std::string *stringPTR = &string;
 	std::string &stringREF = string;
+	//std::string &stringREF; -> error
 
 	std::cout << "Address of initial string variable -> \033[1;32;49m" << &string << "\033[0;39;49m" << std::endl;
 	std::cout << "Address of string variable -> \033[1;32;49m" << stringPTR << "\033[0;39;49m" << std::endl;

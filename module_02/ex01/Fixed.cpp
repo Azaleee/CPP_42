@@ -12,12 +12,14 @@ Fixed::Fixed() : _value(0)
 Fixed::Fixed(const int value)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_value = value << _bits;
+	// value * (2^bits)
+	this->_value = _value << _bits;
 }
 
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
+	// value * (2^bits) bitwise operator only works on integers
 	this->_value = roundf(value * (1 << _bits));
 }
 
@@ -64,5 +66,5 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(const int raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
-	this->_value = raw;
+	this->value = raw;
 }

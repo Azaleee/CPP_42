@@ -1,1 +1,0 @@
-ls | ls | ls | cat | wc | wc-l | cat eof >> test | test < test | pwd | cd | echo | env | cat >> output | wc -l | grep caca | pipi | test | mkdir test | cd ../test | ./minishell | cat | ls | ./minishell | ls | cat | << EOF

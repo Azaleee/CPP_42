@@ -16,6 +16,19 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name), m_grade(grad
 	this->m_grade << std::endl;
 }
 
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << "[" << this->getName() << "] signed \"" << form.getName() << "\"" << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cout << "[" << this->getName() << "] could'nt sign \"" << form.getName() << "\" because grade " << this->getGrade() << " is lower than grade to sign " << form.getGradeToSign() << std::endl;
+	}
+}
+
 int Bureaucrat::getGrade() const { return (this->m_grade); }
 
 std::string Bureaucrat::getName() const { return (this->m_name); }

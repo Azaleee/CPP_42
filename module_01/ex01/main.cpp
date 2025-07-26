@@ -10,7 +10,7 @@ int	main(void)
 
 	Zombie	*horde;
 
-	std::cout << "\n\n\033[30;46;1m/?\\\033[0m Zombie horde created by reference for use outside the zombieHorde function" << std::endl;
+	std::cout << "\033[30;46;1m/?\\\033[0m Zombie horde created by reference for use outside the zombieHorde function" << std::endl;
 	horde = zombieHorde(5, "Bizon");
 	for (int i = 0; i < 5; i++)
 		horde[i].announce();

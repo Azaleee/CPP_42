@@ -6,7 +6,7 @@
 
 Bureaucrat::Bureaucrat() : m_name("Default bureaucrat"), m_grade(1) {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name), m_grade(grade)
+Bureaucrat::Bureaucrat(std::string const &name, int const &grade) : m_name(name), m_grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -16,9 +16,21 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name), m_grade(grad
 	this->m_grade << std::endl;
 }
 
+Bureaucrat::Bureaucrat(Bureaucrat const &other) : m_name(other.m_name), m_grade(other.m_grade) {};
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
+{
+	if (&other != this)
+	{
+		this->m_name = other.m_name;
+		this->m_grade = other.m_grade;
+	}
+	return (*this);
+}
+
 int Bureaucrat::getGrade() const { return (this->m_grade); }
 
-std::string Bureaucrat::getName() const { return (this->m_name); }
+std::string const &Bureaucrat::getName() const { return (this->m_name); }
 
 void Bureaucrat::incGrade()
 {
@@ -26,7 +38,9 @@ void Bureaucrat::incGrade()
 		throw GradeTooHighException();
 	else
 		this->m_grade--;
-	std::cout << "The new " << this->m_name << " grade is " << this->m_grade << std::endl;
+	std::cout << "The new " << \
+	this->m_name << " grade is " << \
+	this->m_grade << std::endl;
 }
 
 void Bureaucrat::decGrade()
@@ -35,7 +49,9 @@ void Bureaucrat::decGrade()
 		throw GradeTooLowException();
 	else
 		this->m_grade++;
-	std::cout << "The new " << this->m_name << " grade is " << this->m_grade << std::endl;
+	std::cout << "The new " << \
+	this->m_name << " grade is " << \
+	this->m_grade << std::endl;
 }
 
 std::ostream &operator << (std::ostream &out, const Bureaucrat &target)
