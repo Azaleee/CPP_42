@@ -1,4 +1,4 @@
-SRC = *.cpp
+SRC = main.cpp
 NAME = template
 CC = c++ -Wall -Wextra -Werror -std=c++98 -g3
 

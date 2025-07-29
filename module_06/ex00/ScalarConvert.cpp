@@ -9,13 +9,14 @@ ScalarConvert &ScalarConvert::operator=(ScalarConvert const &) {return *this;};
 ScalarConvert::~ScalarConvert() {};
 
 void ScalarConvert::convert(std::string const &literal) {
-	double d = 0.0;
+	double d = 0.0; // Input double for universal
+	
 	bool isPseudo = (literal == "nan" || literal == "nanf"
 				|| literal == "+inf"|| literal == "+inff"
 				|| literal == "-inf"|| literal == "-inff");
 
 	if (isPseudo) {
-		if (literal.back() == 'f')
+		if (literal[literal.size() - 1] == 'f')
 			d = (literal[0] == '-') ? -std::numeric_limits<double>::infinity() : std::numeric_limits<double>::infinity();
 		else
 			d = std::numeric_limits<double>::quiet_NaN();
@@ -26,13 +27,13 @@ void ScalarConvert::convert(std::string const &literal) {
 	}
 	else if (literal.find('.') != std::string::npos) {
 		std::string num = literal;
-		if (literal.back() == 'f') {
+		if (literal[literal.size() - 1] == 'f') {
 			num = literal.substr(0, literal.size() - 1);
 		}
-		d = std::strtod(num.c_str(), nullptr);
+		d = std::strtod(num.c_str(), 0);
 	}
 	else {
-		long l = std::strtol(literal.c_str(), nullptr, 10);
+		long l = std::strtol(literal.c_str(), 0, 10);
 		d = static_cast<double>(l);
 	}
 

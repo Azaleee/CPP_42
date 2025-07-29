@@ -14,6 +14,7 @@ int main(void)
 	
 	Intern intern;
 	AForm *robot;
+	AForm *wrong;
 
 	try
 	{
@@ -26,4 +27,13 @@ int main(void)
 
 	a.signForm(*robot);
 	a.executeForm(*robot);
+
+	try
+	{
+		wrong = intern.makeForm("wrong", "Test");
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }

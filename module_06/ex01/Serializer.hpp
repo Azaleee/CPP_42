@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <stdint.h>
 
 typedef struct 	Data
 {
@@ -13,8 +14,8 @@ class Serializer
 	private:
 		Serializer();
 		Serializer(Serializer const &);
-		Serializer &operator=(Serializer const &);
-		~Serializer();
+		Serializer &operator=(Serializer const &) { return *this; };
+		~Serializer() {};
 
 	public:
 		static uintptr_t serialize(Data *ptr);

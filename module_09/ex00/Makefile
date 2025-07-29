@@ -1,5 +1,5 @@
-SRC = main.cpp
-NAME = array
+SRC = *.cpp
+NAME = btc
 CC = c++ -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(NAME)

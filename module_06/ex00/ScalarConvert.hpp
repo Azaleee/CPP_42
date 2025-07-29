@@ -2,9 +2,10 @@
 
 #include <iostream>
 # include <string>
-# include <climits>
+# include <limits>
 # include <iomanip>
 # include <algorithm>
+#include <cmath>
 
 class ScalarConvert
 {

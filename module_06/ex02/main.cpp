@@ -4,20 +4,17 @@
 #include "C.hpp"
 
 #include <cstdlib>
+#include <ctime>
+#include <typeinfo>
+#include <cstdio>
 
 static Base *generate(void)
 {
 	switch (std::rand() % 3)
 	{
-	case 0:
-		return new A();
-		break;
-	case 1:
-		return new B();
-		break;
-	case 2:
-		return new C();
-		break;
+	case 0: return new A();
+	case 1: return new B();
+	case 2: return new C();
 	default:
 		perror("Error with the random generator");
 		return (NULL);
@@ -74,7 +71,7 @@ int main(void)
 	Base *base(generate());
 	identify(base);
 	identidy(*base);
-	identidy(nullptr);
+	identify(NULL);
 	delete base;
 	return 0;
 }
