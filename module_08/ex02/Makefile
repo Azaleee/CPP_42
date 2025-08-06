@@ -1,15 +1,22 @@
-SRC = *.cpp
-NAME = mutant
-CC = c++ -Wall -Wextra -Werror -std=c++98 -g3
+CC      = c++
+CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g3
+SRC     = main.cpp
+OBJ     = $(SRC:.cpp=.o)
+NAME    = mutant
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CC) $(SRC) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(NAME)
+	rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
+
