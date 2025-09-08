@@ -1,4 +1,14 @@
 template <typename C>
+void PmergeMe::displayContainer(const C &input)
+{
+	for (size_t i = 0; i < input.size(); i++)
+	{
+		std::cout << input[i] << " ";
+	}
+	
+}
+
+template <typename C>
 void PmergeMe::buildMainFromPairs(const std::vector<std::pair<int, int> > &pairs, C &main)
 {
 	main.clear();
@@ -76,7 +86,6 @@ void PmergeMe::groupIntoPairs(const C &input, std::vector<std::pair<int, int> > 
 	if (hasOddElement)
 	{
 		oddElement = input[input.size() - 1];
-		std::cout << "Odd element: " << oddElement << std::endl;
 	}
 
 	for (size_t i = 0; i < input.size() - (hasOddElement ? 1 : 0); i += 2)
@@ -93,4 +102,30 @@ void PmergeMe::groupIntoPairs(const C &input, std::vector<std::pair<int, int> > 
 			pairs.push_back(std::make_pair(first, second));
 		}
 	}
+}
+
+template <typename C>
+C PmergeMe::parseArgs(int ac, char **av)
+{
+	C out;
+	parseArgvInto(ac, av, out);
+	return out;
+}
+
+
+template <typename C>
+void PmergeMe::parseArgvInto(int ac, char **av, C& out)
+{
+	out.clear();
+
+	for (int i = 1; i < ac; i++)
+	{
+		int val;
+		if (!parsePositiveIntToken(std::string(av[i]), val))
+			throw std::runtime_error("Error");
+		out.push_back(val);
+	}
+
+	if (out.empty())
+		throw std::runtime_error("Error");
 }

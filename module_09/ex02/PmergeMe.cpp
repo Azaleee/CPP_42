@@ -21,27 +21,6 @@ bool PmergeMe::parsePositiveIntToken(const std::string& tok, int &out)
 	return true;
 }
 
-void PmergeMe::displayVectorPairs(const std::vector<std::pair<int, int> > &pairs)
-{
-	for (size_t j = 0; j < pairs.size(); j++) {
-        std::cout << pairs[j].first << ", " << pairs[j].second << std::endl;
-    }
-}
-
-void PmergeMe::displayVector(const std::vector<int> &input)
-{
-	for (size_t i = 0; i < input.size(); i++)
-		std::cout << input[i] << ", ";
-	std::cout << "" << std::endl;
-}
-
-void PmergeMe::displayDeque(const std::deque<int> &input)
-{
-	for (size_t i = 0; i < input.size(); i++)
-		std::cout << input[i] << ", ";
-	std::cout << "" << std::endl;
-}
-
 void PmergeMe::generateJacobSequence(size_t n, std::vector<size_t> &J)
 {
 	J.clear();
@@ -89,7 +68,6 @@ void PmergeMe::sortPairsByBig(std::vector<std::pair<int, int> > &pairs)
 {
 	std::sort(pairs.begin(), pairs.end(), compareBig);
 }
-
 
 std::vector<int> PmergeMe::fordJohnsonSortVector(const std::vector<int>& input) {
     return fordJohnsonSortGeneric(input);
