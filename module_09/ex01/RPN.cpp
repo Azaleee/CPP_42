@@ -1,5 +1,18 @@
 #include "RPN.hpp"
 
+void RPN::evaluateExpression(std::string const &token)
+{
+	try
+	{
+		this->evaluate(token);
+	}
+	catch(const RPN::Error &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+}
+
 void RPN::validateToken(std::string const &token)
 {
 	if (token.length() != 1 || !isdigit(token[0]))

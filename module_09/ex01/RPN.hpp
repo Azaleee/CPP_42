@@ -20,13 +20,14 @@ class RPN
 		void handleDivide();
 
 		int pop();
-	public:
-		RPN() {};
-		~RPN() {};
 		void evaluate(std::string const &expression);
 
 		struct Error : std::runtime_error
 		{
 			Error(char const *msg = "Error") : std::runtime_error(msg) {};
 		};
+	public:
+		RPN() {};
+		~RPN() {};
+		void evaluateExpression(std::string const &expression);
 };

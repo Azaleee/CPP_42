@@ -8,15 +8,8 @@ int main(int ac, char **av)
 		return 1;
 	}
 
-	try
-	{
-		RPN rpn;
-		rpn.evaluate(av[1]);
-	}
-	catch(const RPN::Error &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
+	RPN rpn;
+
+	rpn.evaluateExpression(av[1]);
 	return 0;
 }
