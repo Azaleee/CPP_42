@@ -69,9 +69,11 @@ void PmergeMe::sortPairsByBig(std::vector<std::pair<int, int> > &pairs)
 	std::sort(pairs.begin(), pairs.end(), compareBig);
 }
 
-std::vector<int> PmergeMe::fordJohnsonSortVector(const std::vector<int>& input) {
+std::vector<int> PmergeMe::fordJohnsonSortVector(const std::vector<int>& input)
+{
     return fordJohnsonSortGeneric(input);
 }
-std::deque<int> PmergeMe::fordJohnsonSortDeque(const std::deque<int>& input) {
+std::deque<int> PmergeMe::fordJohnsonSortDeque(const std::deque<int>& input) 
+{
     return fordJohnsonSortGeneric(input);
 }

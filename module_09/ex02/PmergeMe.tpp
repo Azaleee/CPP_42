@@ -122,10 +122,10 @@ void PmergeMe::parseArgvInto(int ac, char **av, C& out)
 	{
 		int val;
 		if (!parsePositiveIntToken(std::string(av[i]), val))
-			throw std::runtime_error("Error");
+			throw std::runtime_error("Error with parsing");
 		out.push_back(val);
 	}
 
 	if (out.empty())
-		throw std::runtime_error("Error");
+		throw std::runtime_error("Error container is empty");
 }
