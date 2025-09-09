@@ -9,6 +9,6 @@ int main(int ac, char **av)
 	}
 
 	BitcoinExchange ex("data.csv");
-	ex.processInputFile(av[1]);
+	ex.bitcoinCalculator(av[1]);
 	return 0;
 }

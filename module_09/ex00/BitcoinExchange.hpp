@@ -15,11 +15,12 @@ class BitcoinExchange
 		void loadData(std::string const &filename);
 		bool validDate(std::string const &date);
 		float getRateForDate(std::string const &date) const;
+		void processInputFile(std::string const &filename);
+		int error;
 	public:
 		BitcoinExchange(std::string const &dataFile);
 		~BitcoinExchange();
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 		BitcoinExchange(const BitcoinExchange& copy);
-		void processInputFile(std::string const &filename);
-
+		void bitcoinCalculator(std::string const &filename);
 };

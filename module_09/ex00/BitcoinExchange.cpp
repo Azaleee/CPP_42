@@ -1,12 +1,18 @@
 #include "BitcoinExchange.hpp"
+#include <algorithm>
+#include <ostream>
+#include <stdexcept>
+#include <cctype>
 
 BitcoinExchange::BitcoinExchange(std::string const &dataFile)
 {
+	this->error = 0;
 	try
 	{
 		BitcoinExchange::loadData(dataFile);
-	} catch (std::exception &e)
+	} catch (const std::exception &e)
 	{
+		this->error = 1;
 		std::cerr << e.what() << std::endl;
 	}
 }
@@ -19,8 +25,16 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 }
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
 {
-	
 	this->data = other.data;
+}
+
+void BitcoinExchange::bitcoinCalculator(std::string const &filename)
+{
+	try {
+		processInputFile(filename);
+	} catch (const std::runtime_error &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void BitcoinExchange::loadData(std::string const &filename)
@@ -117,19 +131,14 @@ float BitcoinExchange::getRateForDate(std::string const &date) const
 
 void BitcoinExchange::processInputFile(std::string const &filename)
 {
+	if (this->error == 1) throw std::runtime_error("Error");
 	std::ifstream in(filename.c_str());
 	if (!in.is_open())
-	{
-		std::cerr << "Error: could not open file." << std::endl;
-		return;
-	}
+		throw std::runtime_error("Error: could not open input file.");
 
 	std::string line;
 	if (!std::getline(in, line))
-	{
-		std::cerr << "Error: empty input file." << std::endl;
-		return ;
-	}
+		throw std::runtime_error("Error: empty input file.");
 
 	while (std::getline(in, line))
 	{
@@ -146,10 +155,12 @@ void BitcoinExchange::processInputFile(std::string const &filename)
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
+
 		std::string date = line.substr(0, bar);
 		std::string value = line.substr(bar + 1);
 
 		start = date.find_first_not_of(" \t");
+		if (start == std::string::npos) continue;
 		end = date.find_last_not_of(" \t");
 		date = date.substr(start, end - start + 1);
 
@@ -161,6 +172,7 @@ void BitcoinExchange::processInputFile(std::string const &filename)
 
 		char *endptr = NULL;
 		double amount = std::strtod(value.c_str(), &endptr);
+		while (*endptr == ' ' || *endptr == '\t') ++endptr;
 		if (endptr == value.c_str() || *endptr != '\0')
 		{
 			std::cerr << "Error: bad input => " << value << std::endl;
@@ -177,12 +189,13 @@ void BitcoinExchange::processInputFile(std::string const &filename)
 			continue;
 		}
 
-		float rate = BitcoinExchange::getRateForDate(date);
-		if (rate < 0)
-		{
-			std::cerr << "Error: no rate available for this date" << std::endl;
+		double rate;
+		try {
+			rate = BitcoinExchange::getRateForDate(date);
+		} catch (const std::out_of_range &e) {
+			std::cout << e.what() << std::endl;
 			continue;
-		}
+		};
 
 		double result = rate * amount;
 		std::cout
