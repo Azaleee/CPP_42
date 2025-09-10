@@ -6,7 +6,6 @@ bool PmergeMe::parsePositiveIntToken(const std::string& tok, int &out)
 
 	for (size_t i = 0; i < tok.size(); i++)
 		if (tok[i] == ' ' || tok[i] == '\t' || tok[i] == '\n') return false;
-
 	if (tok[0] == '-') return false;
 
 	char *endptr = 0;
@@ -48,7 +47,7 @@ void PmergeMe::generateJacobInsertionOrder(size_t n, std::vector<size_t> &order)
 	for (size_t k = 2; last < (n - 1) && k < J.size(); ++k)
 	{
 		size_t end = J[k];
-		if (end > (n - 1)) end = (n - 1);
+		if (end > (n - 1)) end = (n - 1); //Limit
 
 		for (size_t i = end; i > last; i--)
 			order.push_back(i);
