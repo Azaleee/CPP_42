@@ -10,7 +10,6 @@ void RPN::evaluateExpression(std::string const &token)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
 }
 
 void RPN::validateToken(std::string const &token)
